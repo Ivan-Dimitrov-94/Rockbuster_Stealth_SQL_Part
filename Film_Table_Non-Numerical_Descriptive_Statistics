@@ -1,0 +1,9 @@
+SELECT	
+	MODE() WITHIN GROUP (ORDER BY title) AS Title_Modal_Value,
+	MODE() WITHIN GROUP (ORDER BY description) AS Description_Modal_Value,
+	MODE() WITHIN GROUP (ORDER BY release_year) AS release_year_modal_value,
+	MODE() WITHIN GROUP (ORDER BY rating) AS rating_modal_value,
+	MODE() WITHIN GROUP (ORDER BY last_update) AS last_update_modal_value,
+	MODE() WITHIN GROUP (ORDER BY special_features) AS special_features_modal_value,
+	MODE() WITHIN GROUP (ORDER BY fulltext) AS fulltext_modal_value
+FROM film;
