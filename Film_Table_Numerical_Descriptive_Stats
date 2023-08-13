@@ -16,4 +16,4 @@ SELECT
 	AVG(replacement_cost) AS Avg_Replace_Cost,
 	COUNT(replacement_cost) AS Count_Replace_Cost_Values,
 	COUNT(*) AS Count_Rows
-FROM film;	
+FROM film;
