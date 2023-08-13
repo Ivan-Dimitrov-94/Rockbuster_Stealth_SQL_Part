@@ -1,0 +1,27 @@
+SELECT
+A.title AS Movie_Name,C.name AS genre,A.length	
+AS Movie_length_in_minutes,A.rental_rate,A.rating,A.release_year,J.country,	
+SUM(F.amount) AS total_revenue,	
+CASE WHEN language_id = 1 THEN 'English'	
+ELSE 'Unknown'	
+END AS Language	
+FROM Film A	
+INNER JOIN film_category B ON A.film_id = B.film_id	
+INNER JOIN category C ON B.category_id = C.category_id	
+INNER JOIN inventory D ON A.film_id = D.film_id	
+INNER JOIN rental E ON D.inventory_id = E.inventory_id	
+INNER JOIN payment F ON E.rental_id = F.rental_id	
+INNER JOIN customer G ON E.customer_id = G.customer_id	
+INNER JOIN address H ON G.address_id = H.address_id	
+INNER JOIN city I ON H.city_id = I.city_id	
+INNER JOIN country J ON I.country_id = J.country_id	
+GROUP BY	
+	A.title, 
+	C.name, 
+	A.rental_rate,
+	A.rating,
+	A.length,
+	A.language_id,
+	A.release_year,
+	J.country
+ORDER BY SUM(F.amount) DESC;
